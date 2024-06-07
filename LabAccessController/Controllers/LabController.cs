@@ -12,6 +12,7 @@ namespace LabAccessController.Controllers
     public class LabController : ControllerBase
     {
         private readonly ILabService labService;
+
         public LabController(ILabService labService)
         {
             this.labService = labService;
@@ -20,7 +21,6 @@ namespace LabAccessController.Controllers
         [HttpPost("lab")]
         public IActionResult AddLab(AddLabDto addLabDto)
         {
-
             var result = labService.AddLab(addLabDto);
             return Ok(result);
         }
@@ -38,6 +38,7 @@ namespace LabAccessController.Controllers
             var result = labService.UpdateLab(updateLab);
             return Ok(result);
         }
+
         [HttpGet("lab")]
         public IActionResult GetLab(int labId)
         {

@@ -37,6 +37,7 @@ namespace DataAcces.Uow
                 {
                     dbContext = (DbContext)Activator.CreateInstance(typeof(T));
                 }
+
                 return dbContext;
             }
             set { dbContext = value; }
@@ -51,7 +52,6 @@ namespace DataAcces.Uow
         /// </summary>
         public UnitOfWork()
         {
-
         }
 
         #endregion
@@ -110,9 +110,11 @@ namespace DataAcces.Uow
             {
                 if (result == -1)
                 {
-                    Console.WriteLine($"UnitOfWork Save Error. Type : {typeof(T).Name} Error Messages : {JsonConvert.SerializeObject(ErrorMessageList)}");
+                    Console.WriteLine(
+                        $"UnitOfWork Save Error. Type : {typeof(T).Name} Error Messages : {JsonConvert.SerializeObject(ErrorMessageList)}");
                 }
             }
+
             return result;
         }
 
@@ -125,6 +127,7 @@ namespace DataAcces.Uow
             DbContext.Database.CloseConnection();
             DbContext = null;
         }
+
         #endregion
     }
 }

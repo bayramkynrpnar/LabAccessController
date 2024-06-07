@@ -61,7 +61,7 @@ namespace DataAcces.Repository
         public int Count(Expression<Func<T, bool>> predicate)
         {
             IQueryable<T> iQueryable = DbSet
-            .Where(predicate);
+                .Where(predicate);
             return iQueryable.Count();
         }
 
@@ -132,4 +132,4 @@ namespace DataAcces.Repository
             DbSet.AddRange(entity);
         }
     }
-    }
+}

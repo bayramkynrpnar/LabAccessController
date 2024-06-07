@@ -12,7 +12,6 @@ namespace DataAcces.Context
     {
         public PostgresContext()
         {
-
         }
 
         public PostgresContext(DbContextOptions<PostgresContext> options, IConfiguration configuration)

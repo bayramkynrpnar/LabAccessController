@@ -13,8 +13,6 @@ namespace DataAccess.Configuration
     {
         public override void Configure(EntityTypeBuilder<LabModel> builder)
         {
-
-
             builder.HasData(
                 new LabModel()
                 {
@@ -22,11 +20,8 @@ namespace DataAccess.Configuration
                     Id = 1,
                     Name = "Name",
                     LessonModelId = 1,
-
-
                 }
-
-                );
+            );
 
             base.Configure(builder);
         }

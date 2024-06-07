@@ -1,6 +1,4 @@
-﻿
-
-using Data.Dto.Lesson;
+﻿using Data.Dto.Lesson;
 using Data.Model;
 using DataAcces.Context;
 using DataAcces.Uow;
@@ -27,9 +25,6 @@ namespace Services.Lesson
             }
         }
 
-        
-
-      
 
         public int DeleteLesson(int lessonId)
         {
@@ -80,7 +75,5 @@ namespace Services.Lesson
                 return lessons;
             }
         }
-
-
     }
 }

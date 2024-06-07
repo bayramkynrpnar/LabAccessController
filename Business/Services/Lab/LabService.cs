@@ -1,6 +1,4 @@
-﻿
-
-using Data.Model;
+﻿using Data.Model;
 using DataAcces.Context;
 using DataAcces.Uow;
 using Dto.Lab;
@@ -47,7 +45,6 @@ namespace Services.Lab
             }
         }
 
-        
 
         public LabModel GetLab(int labId)
         {
@@ -79,11 +76,5 @@ namespace Services.Lab
                 return labs;
             }
         }
-
-
-
-
-
-
     }
 }

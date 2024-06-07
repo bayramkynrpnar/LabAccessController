@@ -13,18 +13,14 @@ namespace DataAccess.Configuration
     {
         public override void Configure(EntityTypeBuilder<StudentToExperiment> builder)
         {
-
-
             builder.HasData(
                 new StudentToExperiment()
                 {
                     Id = 1,
                     ExperimentId = 1,
                     UserId = 1,
-
                 }
-
-                );
+            );
 
             base.Configure(builder);
         }

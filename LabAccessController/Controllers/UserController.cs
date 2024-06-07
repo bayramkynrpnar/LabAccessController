@@ -12,6 +12,7 @@ namespace LabAccessController.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService userService;
+
         public UserController(IUserService userService)
         {
             this.userService = userService;
@@ -20,9 +21,8 @@ namespace LabAccessController.Controllers
         [HttpPost("user")]
         public IActionResult AddUser(AddUserDto addUserDto)
         {
-
             userService.AddUser(addUserDto);
-            return Ok(); 
+            return Ok();
         }
 
         [HttpDelete("user")]
@@ -38,6 +38,7 @@ namespace LabAccessController.Controllers
             var result = userService.UpdateUser(updateUser);
             return Ok();
         }
+
         [HttpGet("user")]
         public IActionResult GetUser(int userId)
         {

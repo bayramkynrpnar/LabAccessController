@@ -19,6 +19,7 @@ namespace LabAccessController.Controllers
     public class ExperimentController : ControllerBase
     {
         private readonly IExperimentService experimentService;
+
         public ExperimentController(IExperimentService experimentService)
         {
             this.experimentService = experimentService;
@@ -27,7 +28,6 @@ namespace LabAccessController.Controllers
         [HttpPost("Experiment")]
         public IActionResult AddExperiment(AddExperimentDto addExperimentDto)
         {
-
             var result = experimentService.AddExperiment(addExperimentDto);
             return Ok(result);
         }
@@ -45,6 +45,7 @@ namespace LabAccessController.Controllers
             var result = experimentService.UpdateExperiment(updateexp);
             return Ok(result);
         }
+
         [HttpGet("Experiment")]
         public IActionResult GetLab(int expId)
         {
@@ -60,30 +61,22 @@ namespace LabAccessController.Controllers
         }
 
         [HttpGet("TakeQrCodeExperiment")]
-        public IActionResult TakeQrCodeExperiment(int userId , int experimentId )
+        public IActionResult TakeQrCodeExperiment(int userId, int experimentId)
         {
-            var Qr = experimentService.TakeExperimentQrCode(userId , experimentId);
+            var Qr = experimentService.TakeExperimentQrCode(userId, experimentId);
             QRCodeGenerator qrGenerator = new QRCodeGenerator();
-             QRCodeData qrCodeData = qrGenerator.CreateQrCode(Qr, QRCodeGenerator.ECCLevel.Q);
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode(Qr, QRCodeGenerator.ECCLevel.Q);
             QRCode qrCode = new QRCode(qrCodeData);
-             Bitmap qrCodeImage = qrCode.GetGraphic(60);
+            Bitmap qrCodeImage = qrCode.GetGraphic(60);
             byte[] bitmapArray = qrCodeImage.BitmapToByteArray();
 
-                return File(bitmapArray, MediaTypeNames.Image.Jpeg, userId + ".jpeg");
-         
+            return File(bitmapArray, MediaTypeNames.Image.Jpeg, userId + ".jpeg");
         }
 
         [HttpGet("LoginExperiment")]
         public IActionResult TakeQrCodeExperiments(IFormFile image)
         {
-            
-
             return Ok();
-
         }
-
-
-
-
     }
 }

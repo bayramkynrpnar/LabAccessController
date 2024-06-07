@@ -38,7 +38,7 @@ namespace DataAcces.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             
-                var connectionString = "Host=localhost;Port=5432;Database=labaccesscontroller;User Id=root;Password=sadomuzo";
+                var connectionString = "Host=localhost;Port=5432;Database=labaccess;User Id=root;Password=root";
                 optionsBuilder.UseNpgsql(connectionString);
           
         }

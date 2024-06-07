@@ -1,9 +1,8 @@
-﻿
-
-using Data.Model;
+﻿using Data.Model;
 using DataAcces.Context;
 using DataAcces.Uow;
 using Dto.User;
+using SkiLabUtils.TokenFactory;
 
 namespace Services.User
 {
@@ -18,16 +17,12 @@ namespace Services.User
                 userModel.Surname = addUser.Surname;
                 userModel.UserType = 0;
 
-
                 uow.GetRepository<UserModel>().Add(userModel);
 
                 return uow.SaveChanges();
             }
         }
 
-        
-
-      
 
         public int DeleteUser(int userId)
         {
@@ -40,7 +35,6 @@ namespace Services.User
         }
 
 
-
         public List<UserModel> GetAllUser()
         {
             using (var uow = new UnitOfWork<PostgresContext>())
@@ -50,7 +44,6 @@ namespace Services.User
             }
         }
 
-        
 
         public UserModel GetUser(int userId)
         {
@@ -65,7 +58,7 @@ namespace Services.User
         {
             using (var uow = new UnitOfWork<PostgresContext>())
             {
-                return true;/*uow.GetRepository<UserModel>().Any(x => x.Phone.Equals(phoneNumber));*/
+                return true; /*uow.GetRepository<UserModel>().Any(x => x.Phone.Equals(phoneNumber));*/
             }
         }
 
@@ -76,17 +69,9 @@ namespace Services.User
                 var user = uow.GetRepository<UserModel>().Get(x => x.Id == updateUser.UserId);
                 user.Name = updateUser.Name;
                 user.Surname = updateUser.Surname;
-                
+
                 return uow.SaveChanges();
             }
         }
-
-
-
-
-
-
-
-
     }
 }

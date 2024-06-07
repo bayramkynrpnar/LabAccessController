@@ -104,7 +104,8 @@ namespace DataAccess.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     ExperimentId = table.Column<int>(type: "integer", nullable: false),
                     UserId = table.Column<int>(type: "integer", nullable: false),
-                    ExperimentModelId = table.Column<int>(type: "integer", nullable: true)
+                    ExperimentModelId = table.Column<int>(type: "integer", nullable: true),
+                    QrCodeText = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -123,8 +124,8 @@ namespace DataAccess.Migrations
 
             migrationBuilder.InsertData(
                 table: "StudentToExperiment",
-                columns: new[] { "Id", "ExperimentId", "ExperimentModelId", "UserId" },
-                values: new object[] { 1, 1, null, 1 });
+                columns: new[] { "Id", "ExperimentId", "ExperimentModelId", "QrCodeText", "UserId" },
+                values: new object[] { 1, 1, null, "", 1 });
 
             migrationBuilder.InsertData(
                 table: "UserModel",

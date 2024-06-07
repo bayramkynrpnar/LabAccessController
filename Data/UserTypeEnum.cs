@@ -4,7 +4,7 @@
     {
         STUDENT, // öğrenci
         TEACHER, // hoca
-        OWNER // patron
+        OWNER // Kurucu
     }
 }
 

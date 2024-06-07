@@ -3,7 +3,6 @@ using System;
 using DataAcces.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,12 +10,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DataAccess.Migrations
 {
-    [DbContext(typeof(PostgresContext))]
-    [Migration("20240220023040_initial")]
-    partial class initial
+    [DbContext(typeof(ProjectDbContext))]
+    partial class ProjectDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -151,6 +148,10 @@ namespace DataAccess.Migrations
                     b.Property<int?>("ExperimentModelId")
                         .HasColumnType("integer");
 
+                    b.Property<string>("QrCodeText")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<int>("UserId")
                         .HasColumnType("integer");
 
@@ -165,6 +166,7 @@ namespace DataAccess.Migrations
                         {
                             Id = 1,
                             ExperimentId = 1,
+                            QrCodeText = "",
                             UserId = 1
                         });
                 });

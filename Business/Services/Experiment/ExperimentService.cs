@@ -32,9 +32,6 @@ namespace Services.Experiment
             }
         }
 
-        
-
-      
 
         public int DeleteExperiment(int experimentId)
         {
@@ -56,7 +53,6 @@ namespace Services.Experiment
             }
         }
 
-        
 
         public ExperimentModel GetExperiment(int experimentId)
         {
@@ -91,22 +87,20 @@ namespace Services.Experiment
             }
         }
 
-        public int AddStudentToExperiment(int userId , int experimentId)
+        public int AddStudentToExperiment(int userId, int experimentId)
         {
             using (var uow = new UnitOfWork<PostgresContext>())
             {
-
-                
                 var studentToExperiment = new StudentToExperiment()
-                    {
+                {
                     ExperimentId = experimentId,
                     UserId = userId,
                     QrCodeText = userId.ToString() + experimentId.ToString(),
-
-                 };
+                };
 
                 QRCodeGenerator qrGenerator = new QRCodeGenerator();
-                QRCodeData qrCodeData = qrGenerator.CreateQrCode(studentToExperiment.QrCodeText, QRCodeGenerator.ECCLevel.Q);
+                QRCodeData qrCodeData =
+                    qrGenerator.CreateQrCode(studentToExperiment.QrCodeText, QRCodeGenerator.ECCLevel.Q);
                 QRCode qrCode = new QRCode(qrCodeData);
                 Bitmap qrCodeImage = qrCode.GetGraphic(60);
 
@@ -120,7 +114,8 @@ namespace Services.Experiment
         {
             using (var uow = new UnitOfWork<PostgresContext>())
             {
-                var student = uow.GetRepository<StudentToExperiment>().Get(x=>x.UserId == userId&& x.ExperimentId == experimentId);
+                var student = uow.GetRepository<StudentToExperiment>()
+                    .Get(x => x.UserId == userId && x.ExperimentId == experimentId);
 
                 return student.QrCodeText;
             }
@@ -135,6 +130,5 @@ namespace Services.Experiment
         //        return student.QrCodeText;
         //    }
         //}
-
     }
 }
