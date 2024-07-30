@@ -13,17 +13,6 @@ namespace DataAccess.Configuration
     {
         public override void Configure(EntityTypeBuilder<UserModel> builder)
         {
-            builder.HasData(
-                new UserModel()
-                {
-                    Id = 1,
-                    Name = "Name",
-                    Surname = "S",
-                    Email = "S",
-                    Number = "055",
-                    Password = "S",
-                }
-            );
 
             base.Configure(builder);
         }

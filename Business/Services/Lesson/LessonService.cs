@@ -17,7 +17,7 @@ namespace Services.Lesson
                 var lessonModel = new LessonModel();
                 lessonModel.Name = addLesson.Name;
                 lessonModel.Description = addLesson.Description;
-                lessonModel.UserId = addLesson.UserId;
+                lessonModel.LabModelId = addLesson.LabId;
 
                 uow.GetRepository<LessonModel>().Add(lessonModel);
 
@@ -61,17 +61,16 @@ namespace Services.Lesson
                 var lessonModel = uow.GetRepository<LessonModel>().Get(x => x.Id == updateLesson.UserId);
                 lessonModel.Name = updateLesson.Name;
                 lessonModel.Description = updateLesson.Description;
-                lessonModel.UserId = updateLesson.UserId;
 
                 return uow.SaveChanges();
             }
         }
 
-        public IQueryable<LessonModel> GetLessonsWithTeacher(int userId)
+        public IQueryable<LessonModel> GetLessonsWithTeacher(int labModelId)
         {
             using (var uow = new UnitOfWork<PostgresContext>())
             {
-                var lessons = uow.GetRepository<LessonModel>().GetAll(x => x.UserId == userId);
+                var lessons = uow.GetRepository<LessonModel>().GetAll(x => x.LabModelId == labModelId);
                 return lessons;
             }
         }

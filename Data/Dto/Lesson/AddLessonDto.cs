@@ -8,7 +8,7 @@ namespace Data.Dto.Lesson
 {
     public class AddLessonDto
     {
-        public int UserId { get; set; }
+        public int LabId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
     }

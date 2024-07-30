@@ -9,7 +9,7 @@ namespace Data.Dto.Experiment
 {
     public class AddExperimentDto
     {
-        public int LabModelId { get; set; }
+        public int LessonModelId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTime StartDate { get; set; }

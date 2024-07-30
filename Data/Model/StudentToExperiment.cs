@@ -10,7 +10,6 @@ namespace Data.Model
     {
         public int ExperimentId { get; set; }
         public int UserId { get; set; }
-        public virtual ExperimentModel? ExperimentModel { get; set; }
         public string QrCodeText { get; set; } = "";
     }
 }

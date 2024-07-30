@@ -17,7 +17,6 @@ namespace Services.Lab
                 var labModel = new LabModel();
                 labModel.Name = addLab.Name;
                 labModel.Description = addLab.Description;
-                labModel.LessonModelId = addLab.LessonModelId;
 
                 uow.GetRepository<LabModel>().Add(labModel);
 
@@ -62,7 +61,6 @@ namespace Services.Lab
                 var labModel = uow.GetRepository<LabModel>().Get(x => x.Id == updateLab.LabId);
                 labModel.Name = updateLab.Name;
                 labModel.Description = updateLab.Description;
-                labModel.LessonModelId = updateLab.LessonModelId;
 
                 return uow.SaveChanges();
             }
@@ -72,7 +70,7 @@ namespace Services.Lab
         {
             using (var uow = new UnitOfWork<PostgresContext>())
             {
-                var labs = uow.GetRepository<LabModel>().GetAll(x => x.LessonModelId == lessonId);
+                var labs = uow.GetRepository<LabModel>().GetAll();
                 return labs;
             }
         }

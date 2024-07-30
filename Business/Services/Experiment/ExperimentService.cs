@@ -22,9 +22,8 @@ namespace Services.Experiment
                 var experimentModel = new ExperimentModel();
                 experimentModel.Name = addExperiment.Name;
                 experimentModel.StartDate = addExperiment.StartDate;
-                experimentModel.LabModelId = addExperiment.LabModelId;
                 experimentModel.Description = addExperiment.Description;
-
+                experimentModel.LessonModelId = addExperiment.LessonModelId;
 
                 uow.GetRepository<ExperimentModel>().Add(experimentModel);
 
@@ -82,7 +81,7 @@ namespace Services.Experiment
         {
             using (var uow = new UnitOfWork<PostgresContext>())
             {
-                var experiments = uow.GetRepository<ExperimentModel>().GetAll(x => x.LabModelId == labId).ToList();
+                var experiments = uow.GetRepository<ExperimentModel>().GetAll(x => x.LessonModelId == labId).ToList();
                 return experiments;
             }
         }

@@ -17,7 +17,9 @@
       "applicationUrl": "http://localhost:5215",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "PostgreUri": "Host=localhost;Port=5432;Database=labaccesscontroller;User Id=root;Password=root"
+        "PostgreUri": "Host=localhost;Port=5432;Database=labaccesscontroller;User Id=root;Password=root",
+        "TOKEN_ISSUER": "labaccess.com",
+        "TOKEN_SECURITY_KEY": "52c431bf501bacee454c3aaea61ec6a11f8cb96b0d77f7210f012a49887d6979"
       }
     },
     "https": {

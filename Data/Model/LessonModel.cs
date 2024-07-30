@@ -8,10 +8,10 @@ namespace Data.Model
 {
     public class LessonModel : BaseEntity
     {
-        public int UserId { get; set; }
+        public int LabModelId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public UserModel? UserModel { get; set; }
-
+        public virtual ICollection<ExperimentModel> ExperimentModels{ get; set; }
+        public virtual LabModel LabModel { get; set; }
     }
 }

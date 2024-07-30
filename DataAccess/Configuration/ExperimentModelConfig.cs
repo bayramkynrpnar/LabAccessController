@@ -13,16 +13,7 @@ namespace DataAccess.Configuration
     {
         public override void Configure(EntityTypeBuilder<ExperimentModel> builder)
         {
-            builder.HasData(
-                new ExperimentModel()
-                {
-                    Description = "Description",
-                    Id = 1,
-                    Name = "Name",
-                    LabModelId = 1,
-                }
-            );
-
+            builder.HasOne(x => x.LessonModel).WithMany(x => x.ExperimentModels).HasForeignKey(x => x.LessonModelId);
             base.Configure(builder);
         }
     }

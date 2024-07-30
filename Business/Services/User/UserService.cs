@@ -15,7 +15,11 @@ namespace Services.User
                 var userModel = new UserModel();
                 userModel.Name = addUser.Name;
                 userModel.Surname = addUser.Surname;
+                userModel.Email = addUser.EMail;
+                userModel.Phone = addUser.Phone;
+                userModel.Password = addUser.Pass;
                 userModel.UserType = 0;
+                userModel.AppRegisterToken = JWTTokenFactory.Instance.CreateToken(userModel);
 
                 uow.GetRepository<UserModel>().Add(userModel);
 

@@ -13,17 +13,16 @@ namespace DataAcces.Context
     {
         public ProjectDbContext()
         {
-
         }
 
         public ProjectDbContext(DbContextOptions<ProjectDbContext> options, IConfiguration configuration)
-         : base(options)
+            : base(options)
         {
             Configuration = configuration;
         }
 
         protected ProjectDbContext(DbContextOptions options, IConfiguration configuration)
-         : base(options)
+            : base(options)
         {
             Configuration = configuration;
         }
@@ -37,10 +36,8 @@ namespace DataAcces.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            
-                var connectionString = "Host=localhost;Port=5432;Database=labaccess;User Id=root;Password=root";
-                optionsBuilder.UseNpgsql(connectionString);
-          
+            var connectionString = "Host=localhost;Port=5432;Database=labaccess;User Id=root;Password=root";
+            optionsBuilder.UseNpgsql(connectionString);
         }
     }
 }
